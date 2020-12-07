@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: engsi_database_development
+  username: postgres
+  password: 
+
+test: &test
+  <<: *default
+  database: engsi_database_test
+
+production:
+  <<: *default
+  url: postgres://qhciytohihxrnp:6a31903b45172f1ea3ee010c69ed60fbff38434627f709c1415e270219523ce5@ec2-54-236-122-55.compute-1.amazonaws.com:5432/d247b11bn0puai
+  #<%= ENV['DATABASE_URL'] %>
+  database: d247b11bn0puai
+  user: qhciytohihxrnp
+  
+cucumber:
+  <<: *test
